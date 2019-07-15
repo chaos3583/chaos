@@ -1,7 +1,7 @@
 package com.chaos.demo;
 
 public class ThreadLocalDemo {
-    private static ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+    private static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
     private static int value = 0;
 
     public static class ThreadLocalThread implements Runnable {

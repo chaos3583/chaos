@@ -4,7 +4,6 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 
 import com.chaos.common.AbstractSimpleMessageListenerContainer;
 import com.chaos.mq.MqMessageVO;
-import com.hivescm.common.domain.DataResult;
 
 public class ChaosTestMq extends AbstractSimpleMessageListenerContainer {
 

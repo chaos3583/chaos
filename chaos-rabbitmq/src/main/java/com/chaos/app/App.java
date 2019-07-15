@@ -8,9 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
-import com.alicp.jetcache.anno.config.EnableMethodCache;
-
 @Configuration
 @EnableAutoConfiguration
 @EnableAsync
@@ -18,8 +15,8 @@ import com.alicp.jetcache.anno.config.EnableMethodCache;
 @ComponentScan(basePackages = {"com.chaos"})
 @PropertySource({"classpath:application.properties"})
 //@EnableTSharding(mapperPackage={"com.chaos.dao"})
-@EnableMethodCache(basePackages = "com.chaos")
-@EnableCreateCacheAnnotation
+//@EnableMethodCache(basePackages = "com.chaos")
+//@EnableCreateCacheAnnotation
 public class App extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);

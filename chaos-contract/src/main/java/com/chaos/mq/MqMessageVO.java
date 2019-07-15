@@ -2,9 +2,9 @@ package com.chaos.mq;
 
 import java.io.Serializable;
 
-import org.springframework.util.StringUtils;
-
-import com.chaos.util.JsonMapper;
+//import org.springframework.util.StringUtils;
+//
+//import com.chaos.util.JsonMapper;
 
 public class MqMessageVO implements Serializable {
 
@@ -53,12 +53,12 @@ public class MqMessageVO implements Serializable {
 	public void setMesObj(Object mesObj) {
 		this.mesObj = mesObj;
 	}
-	@Override
-	public String toString() {
-		if(StringUtils.isEmpty(this.message) && this.mesObj == null){
-			return "";
-		}
-		return JsonMapper.toJsonString(this);
-	}
+//	@Override
+//	public String toString() {
+//		if(StringUtils.isEmpty(this.message) && this.mesObj == null){
+//			return "";
+//		}
+//		return JsonMapper.toJsonString(this);
+//	}
 
 }
