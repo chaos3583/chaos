@@ -1,10 +1,11 @@
 package com.chaos.biz;
 
+import com.sun.star.sheet.DataResult;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 
 import com.chaos.common.AbstractSimpleMessageListenerContainer;
 import com.chaos.mq.MqMessageVO;
-import com.hivescm.common.domain.DataResult;
+//import com.hivescm.common.domain.DataResult;
 
 public class ChaosTestMq extends AbstractSimpleMessageListenerContainer {
 
@@ -18,9 +19,9 @@ public class ChaosTestMq extends AbstractSimpleMessageListenerContainer {
 	}
 
 	@Override
-	public DataResult<String> consumeMessage(MqMessageVO message) {
+	public String consumeMessage(MqMessageVO message) {
 		System.out.println(message.getMessage());
-		return DataResult.success("dd",String.class);
+		return "dd";
 	}
 
 }

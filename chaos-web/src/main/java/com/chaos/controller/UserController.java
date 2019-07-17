@@ -2,8 +2,12 @@ package com.chaos.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.alicp.jetcache.anno.CacheType;
+import com.alicp.jetcache.anno.Cached;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,25 +18,31 @@ import com.chaos.service.IUserService;
 import com.chaos.util.TokenClient;
 
 @RestController
+@RequestMapping(value="/user")
 public class UserController {
 
 	@Autowired
 	private IUserService userService;
 	
-	@CreateCache(expire = 100)
-	private Cache<Long, User> userCache;
+//	@CreateCache(expire = 100)
+//	private Cache<Long, User> userCache;
 	
-	@RequestMapping("/")
+	@RequestMapping(value="/index")
     public ModelAndView findMemberByMemberId() throws Exception{
     	ModelAndView model = new ModelAndView();
-	  	model.setViewName("login");
+	  	model.setViewName("index");
 	  	return model;
     }
+
+	@RequestMapping("/ftlIndex")
+	public String ftlIdex(){
+		return "hello";
+	}
 	
 	@RequestMapping("/login")
-//	@Cached(name="login", expire=360,key="user.userName", cacheType=CacheType.LOCAL)
+//	@Cached(name="login", expire=360,key="user.userName", cacheType= CacheType.LOCAL)
 	public Integer login(HttpSession session,User user) {
-			userCache.PUT(12345L, user);
+//			userCache.PUT(12345L, user);
 			User loginUser = userService.login(user);
 			String token = TokenClient.getToken(loginUser.getId());
 			session.setAttribute("user_token", token);
@@ -41,7 +51,7 @@ public class UserController {
 			if(loginUser!=null) {
 				result=1;
 			}
-			User user2 = userCache.get(12345L);
+//			User user2 = userCache.get(12345L);
 			return result;
 	}
 

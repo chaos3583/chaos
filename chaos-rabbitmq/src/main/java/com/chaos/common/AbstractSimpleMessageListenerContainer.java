@@ -1,5 +1,6 @@
 package com.chaos.common;
 
+import com.chaos.util.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.core.AcknowledgeMode;
@@ -10,7 +11,7 @@ import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 
 import com.chaos.mq.MqMessageVO;
 import com.chaos.util.JsonMapper;
-import com.hivescm.common.domain.DataResult;
+//import com.hivescm.common.domain.DataResult;
 import com.rabbitmq.client.Channel;
 
 public abstract class AbstractSimpleMessageListenerContainer extends SimpleMessageListenerContainer{
@@ -51,11 +52,11 @@ public abstract class AbstractSimpleMessageListenerContainer extends SimpleMessa
 		log.info("Abstract接收到消息内容："+mes);
 		try{
 			MqMessageVO messagevo = (MqMessageVO) JsonMapper.fromJsonString(mes, MqMessageVO.class);
-			DataResult<String> dr = consumeMessage(messagevo);
+			String dr = consumeMessage(messagevo);
 			log.info("Abstract消息消费返回结果：",mes);
 			//入库（成功失败不影响消息队列的处理）
 //			buildMqConsumeLog(dr, mes);
-			if(dr.isFailed()){
+			if(StringUtils.isEmpty(dr)){
 				if(this.curRetryNum >= this.retryNum){
 					channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
 					log.info("队列："+getQueueName()+"消息处理失败大于指定次数，确认成功!"+"消息内容："+mes);
@@ -144,5 +145,5 @@ public abstract class AbstractSimpleMessageListenerContainer extends SimpleMessa
 	 * @param message
 	 * @return
 	 */
-	public abstract DataResult<String> consumeMessage(MqMessageVO message);
+	public abstract String consumeMessage(MqMessageVO message);
 }

@@ -111,23 +111,35 @@
 		    <version>3.16</version>
 		</dependency>
 		<!-- tsharding分库分表 -->
-		<dependency>
+		<!--<dependency>
 				<groupId>com.mogujie.trade</groupId>
 				<artifactId>scm-tsharding-client</artifactId>
 				<version>2.1.0-SNAPSHOT</version>
 				<type>jar</type>
-			</dependency>
+			</dependency>-->
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-core</artifactId>
 		</dependency>
-		
+      <!-- 引入freeMarker依赖包 -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-freemarker</artifactId>
+      </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+      <!--<dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      </dependency>-->
+      <!-- 添加 JSTL 支持 -->
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
+      </dependency>
 		<!-- swagger2 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -151,13 +163,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <version>1.5.2.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
+            <version>7.0.59</version>
         </dependency>
 
         <!-- 格式化对象，方便输出日志 -->
