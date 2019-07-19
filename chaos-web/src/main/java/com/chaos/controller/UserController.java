@@ -2,26 +2,20 @@ package com.chaos.controller;
 
 import javax.servlet.http.HttpSession;
 
-import com.alicp.jetcache.anno.CacheType;
-import com.alicp.jetcache.anno.Cached;
+import com.chaos.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alicp.jetcache.Cache;
-import com.alicp.jetcache.anno.CreateCache;
 import com.chaos.model.User;
-import com.chaos.service.IUserService;
 import com.chaos.util.TokenClient;
 
 @RestController
 public class UserController {
 
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 	
 //	@CreateCache(expire = 100)
 //	private Cache<Long, User> userCache;
@@ -42,7 +36,10 @@ public class UserController {
 //	@Cached(name="login", expire=360,key="user.userName", cacheType= CacheType.LOCAL)
 	public Integer login(HttpSession session,User user) {
 //			userCache.PUT(12345L, user);
-			User loginUser = userService.login(user);
+			User loginUser = userService.selectByUser(user);
+			if (loginUser==null){
+				return 0;
+			}
 			String token = TokenClient.getToken(loginUser.getId());
 			session.setAttribute("user_token", token);
 			session.setMaxInactiveInterval(30 * 60);//设置session失效时间，单位为秒

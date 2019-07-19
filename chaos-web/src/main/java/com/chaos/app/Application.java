@@ -14,7 +14,7 @@ import com.alicp.jetcache.anno.config.EnableMethodCache;
 @Configuration
 @EnableAutoConfiguration
 @EnableAsync
-@MapperScan(basePackages = {"com.shawearn.demo.persistence"})
+@MapperScan(basePackages = {"com.chaos"})
 @ComponentScan(basePackages = {"com.chaos"})
 @PropertySource({"classpath:application.properties"})
 //@EnableTSharding(mapperPackage={"com.chaos.dao"})

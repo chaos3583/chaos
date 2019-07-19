@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chaos.dao.mapper.UserMapper">
+<resultMap  id="BaseResultMap" type="com.chaos.model.User">
+	<id column="id" jdbcType="BIGINT" property="id" />
+	<result column="userName" jdbcType="VARCHAR" property="userName" />
+	<result column="age" jdbcType="TINYINT" property="age" />
+	<result column="password" jdbcType="VARCHAR" property="password" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="token" jdbcType="VARCHAR" property="token" />
+</resultMap>
+	<sql id="select_columns">
+		<![CDATA[id,userName,age,password,code,token]]>
+	</sql>
+
+	<!-- 增加 -->
+	<insert id="insert" parameterType="com.chaos.model.User" useGeneratedKeys="true" keyProperty="id">
+		insert into chaos_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">
+				id ,
+			</if>
+			<if test="userName != null and userName != '' ">
+				userName ,
+			</if>
+			<if test="age != null  ">
+				age ,
+			</if>
+			<if test="password != null and password != '' ">
+				password ,
+			</if>
+			<if test="code != null and code != '' ">
+				code ,
+			</if>
+			<if test="token != null and token != '' ">
+				token ,
+			</if>
+			<if test="status != null  ">
+				status ,
+			</if>
+			<if test="action != null  ">
+				action ,
+			</if>
+			<if test="actionBy != null and actionBy != '' ">
+				actionBy ,
+			</if>
+			<if test="actionTime != null  ">
+				actionTime ,
+			</if>
+			<if test="createBy != null and createBy != '' ">
+				createBy ,
+			</if>
+			<if test="createTime != null  ">
+				createTime ,
+			</if>
+			<if test="remark != null and remark != '' ">
+				remark ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">
+				#{id} ,
+			</if>
+			<if test="userName != null and userName != '' ">
+				#{userName} ,
+			</if>
+			<if test="age != null  ">
+				#{age} ,
+			</if>
+			<if test="password != null and password != '' ">
+				#{password} ,
+			</if>
+			<if test="code != null and code != '' ">
+				#{code} ,
+			</if>
+			<if test="token != null and token != '' ">
+				#{token} ,
+			</if>
+			<if test="status != null">
+				#{status} ,
+			</if>
+			<if test="action != null  ">
+				#{action} ,
+			</if>
+			<if test="actionBy != null and actionBy != '' ">
+				#{actionBy} ,
+			</if>
+			<if test="actionTime != null  ">
+				#{actionTime} ,
+			</if>
+			<if test="createBy != null and createBy != '' ">
+				#{createBy} ,
+			</if>
+			<if test="createTime != null  ">
+				#{createTime} ,
+			</if>
+			<if test="remark != null and remark != '' ">
+				#{remark} ,
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.chaos.model.User">
+		UPDATE chaos_user
+		<set>
+			<if test="userName != null and userName != ''">
+				userName = #{userName},
+			</if>
+			<if test="age != null">
+				age = #{age},
+			</if>
+			<if test="password != null and password != '' ">
+				password = #{password},
+			</if>
+			<if test="code != null and code != '' ">
+				code = #{code},
+			</if>
+			<if test="token != null and token != '' ">
+				token = #{token},
+			</if>
+			<if test="status != null  ">
+				status = #{status},
+			</if>
+			<if test="actionBy != null and actionBy != '' ">
+				actionBy = #{actionBy},
+			</if>
+			<if test="actionTime != null  ">
+				actionTime = #{actionTime},
+			</if>
+			<if test="remark != null and remark != '' ">
+				remark = #{remark},
+			</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<select id="selectByUser" parameterType="com.chaos.model.User" resultMap="BaseResultMap">
+		SELECT
+		<include refid="select_columns"/>
+		FROM chaos_user
+		WHERE action = 1
+		AND userName = #{userName}
+	</select>
+	<select id="login" parameterType="com.chaos.model.User" resultMap="BaseResultMap">
+		SELECT
+		<include refid="select_columns"/>
+		FROM chaos_user
+		WHERE action = 1
+		AND userName = #{userName}
+	</select>
+</mapper>

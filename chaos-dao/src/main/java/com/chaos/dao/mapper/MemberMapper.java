@@ -3,9 +3,11 @@ package com.chaos.dao.mapper;
 import java.util.List;
 
 import com.chaos.model.Member;
+import org.mapstruct.Mapper;
 
 
 //@DataSourceRouting(dataSource = "chaos", table = "member",routeRule=FwScmRouteRule.class,isReadWriteSplitting = true)
+@Mapper
 public interface MemberMapper {
 	
 //	@ShardingExtensionMethod

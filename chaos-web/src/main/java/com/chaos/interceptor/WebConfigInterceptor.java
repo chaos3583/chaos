@@ -10,7 +10,6 @@ public class WebConfigInterceptor extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		// TODO Auto-generated method stub
 		InterceptorRegistration ar = registry.addInterceptor(new Interceptor());
 		// addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截

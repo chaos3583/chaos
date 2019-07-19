@@ -31,6 +31,18 @@ public class User implements Comparable<User>{
      * token
      */
     private String token;
+
+    private Long action;
+
+    private String actionBy;
+
+    private Long actionTime;
+
+	private String createBy;
+
+	private Long createTime;
+
+	private String remark;
     
 	public User() {
 		super();
@@ -114,6 +126,54 @@ public class User implements Comparable<User>{
 
 	public void setTokenExpireTime(Integer tokenExpireTime) {
 		this.tokenExpireTime = tokenExpireTime;
+	}
+
+	public String getActionBy() {
+		return actionBy;
+	}
+
+	public void setActionBy(String actionBy) {
+		this.actionBy = actionBy;
+	}
+
+	public Long getActionTime() {
+		return actionTime;
+	}
+
+	public void setActionTime(Long actionTime) {
+		this.actionTime = actionTime;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Long getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public Long getAction() {
+		return action;
+	}
+
+	public void setAction(Long action) {
+		this.action = action;
 	}
 
 	@Override

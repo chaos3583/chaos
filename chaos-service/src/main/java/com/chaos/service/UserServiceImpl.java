@@ -3,15 +3,15 @@ package com.chaos.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.chaos.dao.mapper.IUserDao;
+import com.chaos.dao.mapper.UserMapper;
 import com.chaos.model.User;
 import com.chaos.mq.MqMessageVO;
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private IUserDao userDao;
+	private UserMapper userMapper;
 	
 //	@Autowired
 //	private RabbitMqSendService rabbitMqService;
@@ -22,9 +22,15 @@ public class UserServiceImpl implements IUserService {
 		MqMessageVO messageVo = new MqMessageVO();
 		messageVo.setMessage("测试mq");
 		messageVo.setQueueName("chaos-mq");
+		User loginUser = userMapper.login(user);
 //		DataResult<Boolean> send = rabbitMqService.send(messageVo);
-		return user;
+		return loginUser;
 	}
-	
+
+	@Override
+	public User selectByUser(User user) {
+		return userMapper.selectByUser(user);
+	}
+
 
 }

@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.chaos.date.DateUtils;
 import com.chaos.excel.ExportExcel;
 import com.chaos.model.Member;
-import com.chaos.service.IMemberService;
+import com.chaos.service.MemberService;
 
 @RestController
 @RequestMapping("/member")
 public class MemberController {
 
 	@Autowired
-	private IMemberService memberService;
+	private MemberService memberService;
 	
 	@RequestMapping("/export")
 	public void export(HttpServletRequest request, HttpServletResponse response) throws Exception {
