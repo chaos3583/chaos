@@ -18,7 +18,6 @@ import com.chaos.service.IUserService;
 import com.chaos.util.TokenClient;
 
 @RestController
-@RequestMapping(value="/user")
 public class UserController {
 
 	@Autowired
@@ -27,10 +26,10 @@ public class UserController {
 //	@CreateCache(expire = 100)
 //	private Cache<Long, User> userCache;
 	
-	@RequestMapping(value="/index")
+	@RequestMapping(value="/")
     public ModelAndView findMemberByMemberId() throws Exception{
     	ModelAndView model = new ModelAndView();
-	  	model.setViewName("index");
+	  	model.setViewName("login");
 	  	return model;
     }
 
