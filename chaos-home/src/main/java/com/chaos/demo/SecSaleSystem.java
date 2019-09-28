@@ -17,6 +17,7 @@ public class SecSaleSystem {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(10,20,100, TimeUnit.SECONDS,new ArrayBlockingQueue<Runnable>(5));
         JedisUtil jedisUtil = new JedisUtil();
         jedisUtil.set("k","v");
+//        System.out.println("黒巧克力风味糖酱1000ml/瓶".equals("黑巧克力风味糖酱1000ml/瓶"));
 
     }
 
@@ -28,7 +29,7 @@ public class SecSaleSystem {
         JedisUtil jedisUtil = new JedisUtil();
         @Override
         public void run() {
-                
+
             while (true){
 
             }
