@@ -2,6 +2,7 @@ package com.chaos.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @program: chaos
@@ -11,12 +12,29 @@ import java.util.List;
  **/
 public class LamdaDemo {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        Integer sum=0;
-        sum = list.stream().reduce(0,(a,b)->a+b);
+//        List<Integer> list = new ArrayList<>();
+//        Integer sum=0;
+//        sum = list.stream().reduce(0,(a,b)->a+b);
         /*list.forEach(s -> {
             sum=sum+s;
         });*/
 
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+        List<List<String>> list3 = new ArrayList<>();
+        list1.add("1");
+        list1.add("2");
+        list2.add("3");
+        list2.add("4");
+        list3.add(list1);
+        list3.add(list2);
+        list3.forEach(l->{
+            System.out.println("前："+l);
+        });
+        List<String> list4 = list3.stream().flatMap(l -> l.stream()).collect(Collectors.toList());
+
+        list4.forEach(l->{
+            System.out.println("后:"+l);
+        });
     }
 }
