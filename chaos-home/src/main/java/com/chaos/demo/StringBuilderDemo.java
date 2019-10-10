@@ -28,5 +28,6 @@ public class StringBuilderDemo {
         Thread.sleep(100);
         System.out.println("StringBuilder:"+sb.length());
         System.out.println("StringBuffer:"+sf.length());
+
     }
 }
