@@ -2,36 +2,24 @@ package com.chaos.model;
 
 import java.util.Date;
 
-import com.chaos.excel.annotation.ExcelField;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 
 /**
  * @author Administrator
  *@date 2017年9月28日
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Member implements Cloneable{
 	
-		@ExcelField(title = "id", align = 1, sort = 20)
         private Long id;
-		@ExcelField(title = "员工id", align = 1, sort = 20)
         private Integer employeeId;
-		@ExcelField(title = "性别", align = 1, sort = 20)
         private Integer gender;
-		@ExcelField(title = "昵称", align = 1, sort = 20)
         private String nickname;
-		@ExcelField(title = "姓名", align = 1, sort = 20)
         private String uname;
 		
 		private Integer age;
 		
         private String passwd;
-        @ExcelField(title = "邮箱", align = 1, sort = 20)
         private String email;
-        @ExcelField(title = "电话", align = 1, sort = 20)
         private String phone;
-        @ExcelField(title = "时间", align = 1, sort = 20)
         private Date regTime;
 
         private Date lastLogin;

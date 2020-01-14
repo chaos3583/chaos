@@ -37,11 +37,14 @@
 		    <groupId>org.springframework.boot</groupId>  
 		    <artifactId>spring-boot-starter-redis</artifactId>  
 		</dependency>-->
+<<<<<<< HEAD
       <!--<dependency>
           <groupId>org.apache.tomcat.embed</groupId>
           <artifactId>tomcat-embed-jasper</artifactId>
           <version>7.0.59</version>
       </dependency>-->
+=======
+>>>>>>> chaos
   </dependencies>
   <build>
     <finalName>chaos-web</finalName>

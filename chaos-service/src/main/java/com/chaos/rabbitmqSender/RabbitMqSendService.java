@@ -26,18 +26,32 @@
 //	 * @param mqvo
 //	 * @return
 //	 */
+<<<<<<< HEAD
 //	public Boolean send(MqMessageVO mqvo){
 //		logger.info("收到发送MQ消息请求，内容："+JsonMapper.toJsonString(mqvo));
 //		if(StringUtils.isEmpty(mqvo.getQueueName())){
 //			return false;
+=======
+//	public DataResult<Boolean> send(MqMessageVO mqvo){
+//		logger.info("收到发送MQ消息请求，内容："+JsonMapper.toJsonString(mqvo));
+//		if(StringUtils.isEmpty(mqvo.getQueueName())){
+//			return DataResult.faild(-1,"队列名不能为空");
+>>>>>>> chaos
 //		}
 //		try{
 //			amqpTemplate.convertAndSend(mqvo.getQueueName(), mqvo.toString());
 //		}catch(Exception e){
 //			logger.error("消息发送异常：",e);
+<<<<<<< HEAD
 //			return false;
 //		}
 //		logger.info("RabbitMQ发送消息成功："+JsonMapper.toJsonString(mqvo));
 //		return true;
+=======
+//			return DataResult.faild(-1,"发送失败");
+//		}
+//		logger.info("RabbitMQ发送消息成功："+JsonMapper.toJsonString(mqvo));
+//		return DataResult.success(Boolean.TRUE, Boolean.class);
+>>>>>>> chaos
 //	}
 //}

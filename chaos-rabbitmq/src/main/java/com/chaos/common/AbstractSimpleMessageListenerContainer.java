@@ -11,7 +11,10 @@ import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 
 import com.chaos.mq.MqMessageVO;
 import com.chaos.util.JsonMapper;
+<<<<<<< HEAD
 //import com.hivescm.common.domain.DataResult;
+=======
+>>>>>>> chaos
 import com.rabbitmq.client.Channel;
 
 public abstract class AbstractSimpleMessageListenerContainer extends SimpleMessageListenerContainer{

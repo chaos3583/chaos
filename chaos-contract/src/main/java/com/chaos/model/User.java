@@ -2,8 +2,6 @@ package com.chaos.model;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class User implements Comparable<User>{
 
 	private Integer id;
@@ -56,7 +54,7 @@ public class User implements Comparable<User>{
 	/**
      * token 失效日期
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date tokenExpireDate;
     /**
      * token 失效时间（秒）

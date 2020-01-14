@@ -163,7 +163,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+<<<<<<< HEAD
             <version>1.5.2.RELEASE</version>
+=======
+            <!--<scope>provided</scope>-->
+>>>>>>> chaos
         </dependency>
 
         <dependency>
@@ -204,8 +208,14 @@
         </dependency>-->
 
       <dependency>
+<<<<<<< HEAD
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-data-redis</artifactId>
+=======
+          <groupId>javax.servlet</groupId>
+          <artifactId>servlet-api</artifactId>
+          <version>2.5</version>
+>>>>>>> chaos
       </dependency>
 		<dependency>
 		    <groupId>org.apache.poi</groupId>
@@ -227,11 +237,11 @@
 		</dependency>
 		
 		<!-- jetcache依赖 -->
-		<dependency>
+		<!--<dependency>
 		    <groupId>com.alicp.jetcache</groupId>
 		    <artifactId>jetcache-starter-redis</artifactId>
 		    <version>2.4.4</version>
-		</dependency>
+		</dependency>-->
   </dependencies>
   <!--设置maven仓库-->
     <repositories>
