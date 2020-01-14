@@ -91,6 +91,7 @@ public class MQConnection {
         }
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(host);
+
         factory.setUsername(username);
         factory.setPassword(password);
         factory.setVirtualHost(virtualHost);
