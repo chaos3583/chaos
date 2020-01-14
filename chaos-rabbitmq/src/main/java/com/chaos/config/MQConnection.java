@@ -51,7 +51,7 @@ public class MQConnection {
         this.password = password;
         this.virtualHost = virtualHost;
         this.connectionTimeout = connectionTimeout;
-        //唯一标识，用于equals方法
+        //唯一标识，用于equals方法11
         this.onlyNum = onlyNum;
         this.isUsed = false;
         // 创建数据库连接
