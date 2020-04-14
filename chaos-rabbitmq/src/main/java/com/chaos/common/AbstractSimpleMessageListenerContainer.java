@@ -17,17 +17,17 @@ public abstract class AbstractSimpleMessageListenerContainer extends SimpleMessa
 	private final int retryNum = 50;//消息消费重试次数
 	private int curRetryNum = 0 ;//当前重试次数
 	
-	public AbstractSimpleMessageListenerContainer(ConnectionFactory connectionFactory){
-		this.setConnectionFactory(connectionFactory);
-		this.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-		this.setMessageListener(new ChannelAwareMessageListener(){
-			@Override
-			public void onMessage(Message message, Channel channel) throws Exception {
-				handleMessage(message, channel);
-			}
-			
-		});
-	}
+//	public AbstractSimpleMessageListenerContainer(ConnectionFactory connectionFactory){
+//		this.setConnectionFactory(connectionFactory);
+//		this.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+//		this.setMessageListener(new ChannelAwareMessageListener(){
+//			@Override
+//			public void onMessage(Message message, Channel channel) throws Exception {
+//				handleMessage(message, channel);
+//			}
+//
+//		});
+//	}
 	@Override
 	public String[] getQueueNames() {
 		String queueName = getQueueName();
@@ -45,53 +45,53 @@ public abstract class AbstractSimpleMessageListenerContainer extends SimpleMessa
 	 * @param channel
 	 * @throws Exception
 	 */
-	private void handleMessage(Message message, Channel channel) throws Exception {
-		String mes = new String(message.getBody(),"UTF-8");
-		log.info("Abstract接收到消息内容："+mes);
-		try{
-			MqMessageVO messagevo = (MqMessageVO) JsonMapper.fromJsonString(mes, MqMessageVO.class);
-			DataResult<String> dr = consumeMessage(messagevo);
-			log.info("Abstract消息消费返回结果：",mes);
-			//入库（成功失败不影响消息队列的处理）
-//			buildMqConsumeLog(dr, mes);
-			if(dr.isFailed()){
-				if(this.curRetryNum >= this.retryNum){
-					channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
-					log.info("队列："+getQueueName()+"消息处理失败大于指定次数，确认成功!"+"消息内容："+mes);
-					return;
-				}
-				this.curRetryNum++;
-				//延时指定时间
-				threadSleep();
-				channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
-				return;
-			}else{
-				this.curRetryNum = 0;
-				channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
-				log.info("队列："+getQueueName()+"消息处理成功!"+"消息内容："+mes);
-				return;
-			}
-			
-		}catch(Exception e){
-			log.error("Abstract处理消息队列消异常：",e);
-			if(this.curRetryNum == 5){//只记录最后一次失败的
-				//入库（成功失败不影响消息队列的处理）
-//				buildMqConsumeLog(DataResult.faild(-1,e.getMessage()), mes);
-			}
-			if(this.curRetryNum >= this.retryNum){
-				channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
-				this.curRetryNum = 0 ;
-				log.info("队列："+getQueueName()+"消息处理异常大于指定次数，确认成功!");
-			}else{
-				this.curRetryNum++;
-				//延时指定时间
-				threadSleep();
-				channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
-			}
-			
-		}
-		
-	}
+//	private void handleMessage(Message message, Channel channel) throws Exception {
+//		String mes = new String(message.getBody(),"UTF-8");
+//		log.info("Abstract接收到消息内容："+mes);
+//		try{
+//			MqMessageVO messagevo = (MqMessageVO) JsonMapper.fromJsonString(mes, MqMessageVO.class);
+//			DataResult<String> dr = consumeMessage(messagevo);
+//			log.info("Abstract消息消费返回结果：",mes);
+//			//入库（成功失败不影响消息队列的处理）
+////			buildMqConsumeLog(dr, mes);
+//			if(dr.isFailed()){
+//				if(this.curRetryNum >= this.retryNum){
+//					channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+//					log.info("队列："+getQueueName()+"消息处理失败大于指定次数，确认成功!"+"消息内容："+mes);
+//					return;
+//				}
+//				this.curRetryNum++;
+//				//延时指定时间
+//				threadSleep();
+//				channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
+//				return;
+//			}else{
+//				this.curRetryNum = 0;
+//				channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+//				log.info("队列："+getQueueName()+"消息处理成功!"+"消息内容："+mes);
+//				return;
+//			}
+//
+//		}catch(Exception e){
+//			log.error("Abstract处理消息队列消异常：",e);
+//			if(this.curRetryNum == 5){//只记录最后一次失败的
+//				//入库（成功失败不影响消息队列的处理）
+////				buildMqConsumeLog(DataResult.faild(-1,e.getMessage()), mes);
+//			}
+//			if(this.curRetryNum >= this.retryNum){
+//				channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+//				this.curRetryNum = 0 ;
+//				log.info("队列："+getQueueName()+"消息处理异常大于指定次数，确认成功!");
+//			}else{
+//				this.curRetryNum++;
+//				//延时指定时间
+//				threadSleep();
+//				channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
+//			}
+//
+//		}
+//
+//	}
 	/**
 	 * 休眠当前线程（重试次数*10秒）
 	 */
@@ -143,5 +143,5 @@ public abstract class AbstractSimpleMessageListenerContainer extends SimpleMessa
 	 * @param message
 	 * @return
 	 */
-	public abstract DataResult<String> consumeMessage(MqMessageVO message);
+//	public abstract DataResult<String> consumeMessage(MqMessageVO message);
 }

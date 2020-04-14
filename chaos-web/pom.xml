@@ -10,7 +10,7 @@
   <groupId>com.chaos</groupId>
   <artifactId>chaos-web</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <name>chaos-web Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -29,6 +29,11 @@
 			<artifactId>chaos-cmmon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
         </dependency>
+          <dependency>
+              <groupId>com.chaos</groupId>
+              <artifactId>chaos-contract</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+          </dependency>
         <dependency>  
             <groupId>org.springframework.boot</groupId>  
             <artifactId>spring-boot-starter-activemq</artifactId>  
@@ -40,5 +45,50 @@
   </dependencies>
   <build>
     <finalName>chaos-web</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+          </plugin>
+
+          <!-- compiler -->
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.5</version>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+                  <encoding>${project.build.sourceEncoding}</encoding>
+              </configuration>
+          </plugin>
+          <!-- 在jar包中包含必要的依赖 -->
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <version>2.3</version>
+              <configuration>
+                  <descriptorRefs>
+                      <descriptorRef>jar-with-dependencies</descriptorRef>
+                  </descriptorRefs>
+              </configuration>
+          </plugin>
+      </plugins>
+      <resources>
+          <resource>
+              <!--<directory>src/main/resources</directory>
+              <includes>
+                  <include>**/*</include>
+              </includes>
+              <filtering>true</filtering>-->
+              <!--配置本地jar包在项目中的存放路径-->
+              <directory>src/main/webapp/WEB-INF/lib/</directory>
+              <!--配置打包时jar包的存放路径-->
+              <targetPath>WEB-INF/lib</targetPath>
+              <includes>
+                  <include>**/*.jar</include>
+              </includes>
+          </resource>
+      </resources>
   </build>
 </project>

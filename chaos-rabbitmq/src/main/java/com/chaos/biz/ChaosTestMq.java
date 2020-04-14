@@ -7,19 +7,19 @@ import com.chaos.mq.MqMessageVO;
 
 public class ChaosTestMq extends AbstractSimpleMessageListenerContainer {
 
-	public ChaosTestMq(ConnectionFactory connectionFactory) {
-		super(connectionFactory);
-	}
+//	public ChaosTestMq(ConnectionFactory connectionFactory) {
+//		super(connectionFactory);
+//	}
 	
 	@Override
 	public String getQueueName() {
 		return "chaos-mq";
 	}
 
-	@Override
+	/*@Override
 	public DataResult<String> consumeMessage(MqMessageVO message) {
 		System.out.println(message.getMessage());
 		return DataResult.success("dd",String.class);
-	}
+	}*/
 
 }

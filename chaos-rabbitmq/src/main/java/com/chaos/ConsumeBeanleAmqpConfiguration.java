@@ -22,9 +22,9 @@ public class ConsumeBeanleAmqpConfiguration {
 	 * @param connectionFactory
 	 * @return
 	 */
-	 @Bean
-	 public ChaosTestMq chaosTestMq(ConnectionFactory connectionFactory) {
-		 ChaosTestMq container = new ChaosTestMq(connectionFactory);
-		 return container;
-	 }
+//	 @Bean
+//	 public ChaosTestMq chaosTestMq(ConnectionFactory connectionFactory) {
+//		 ChaosTestMq container = new ChaosTestMq(connectionFactory);
+//		 return container;
+//	 }
 }
