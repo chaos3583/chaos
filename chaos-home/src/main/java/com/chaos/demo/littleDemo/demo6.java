@@ -1,4 +1,4 @@
-package com.chaos.demo;
+package com.chaos.demo.littleDemo;
 
 /**
  * 在父类构造函数内部调用具有多态行为的方法将导致无法预测的结果，因为此时子类对象还没初始化，此时调用子类方法不会得到我们想要的结果

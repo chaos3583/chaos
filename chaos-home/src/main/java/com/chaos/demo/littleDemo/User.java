@@ -1,4 +1,4 @@
-package com.chaos.demo;
+package com.chaos.demo.littleDemo;
 
 public class User implements Cloneable{
 	private String name;

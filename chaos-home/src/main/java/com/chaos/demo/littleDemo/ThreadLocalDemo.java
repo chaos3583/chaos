@@ -1,4 +1,4 @@
-package com.chaos.demo;
+package com.chaos.demo.littleDemo;
 
 public class ThreadLocalDemo {
     private static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();

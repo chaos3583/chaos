@@ -1,4 +1,4 @@
-package com.chaos.demo;
+package com.chaos.demo.littleDemo;
 
 import java.util.Collections;
 import java.util.Comparator;
