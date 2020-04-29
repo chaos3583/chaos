@@ -1,11 +1,14 @@
 package com.chaos.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
+import com.chaos.util.DataResult;
+import com.chaos.util.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +32,9 @@ public class MemberController {
 	}
 
 	@RequestMapping("/findMember")
-	public void findMember(HttpServletRequest request, HttpServletResponse response,String jsonstr) throws Exception {
+	public Map<String,?> findMember(HttpServletRequest request, HttpServletResponse response, String jsonstr) throws Exception {
 		List<Member> memberList = memberService.find();
 		System.out.println(JSONObject.toJSONString(memberList));
+		return new DataResult("0","0",JSONObject.toJSONString(memberList)).toMap();
 	}
 }
