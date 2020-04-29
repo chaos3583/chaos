@@ -38,20 +38,16 @@
             <groupId>org.springframework.boot</groupId>  
             <artifactId>spring-boot-starter-activemq</artifactId>  
         </dependency>  
-        <!--<dependency>
-		    <groupId>org.springframework.boot</groupId>  
-		    <artifactId>spring-boot-starter-redis</artifactId>  
-		</dependency>-->
   </dependencies>
   <build>
     <finalName>chaos-web</finalName>
-      <plugins>
+      <!--<plugins>
           <plugin>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-maven-plugin</artifactId>
           </plugin>
 
-          <!-- compiler -->
+          &lt;!&ndash; compiler &ndash;&gt;
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
@@ -62,7 +58,7 @@
                   <encoding>${project.build.sourceEncoding}</encoding>
               </configuration>
           </plugin>
-          <!-- 在jar包中包含必要的依赖 -->
+          &lt;!&ndash; 在jar包中包含必要的依赖 &ndash;&gt;
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-assembly-plugin</artifactId>
@@ -73,22 +69,42 @@
                   </descriptorRefs>
               </configuration>
           </plugin>
+      </plugins>-->
+      <plugins>
+          <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+          </plugin>
       </plugins>
       <resources>
           <resource>
-              <!--<directory>src/main/resources</directory>
+              <directory>src/main/java</directory>
+              <includes>
+                  <include>**/*.*</include>
+              </includes>
+          </resource>
+          <resource>
+              <directory>src/main/resources</directory>
+              <includes>
+                  <include>**/*.*</include>
+              </includes>
+          </resource>
+      </resources>
+      <!--<resources>
+          <resource>
+              <directory>src/main/resources</directory>
               <includes>
                   <include>**/*</include>
               </includes>
-              <filtering>true</filtering>-->
-              <!--配置本地jar包在项目中的存放路径-->
-              <directory>src/main/webapp/WEB-INF/lib/</directory>
-              <!--配置打包时jar包的存放路径-->
+              <filtering>true</filtering>
+              &lt;!&ndash;配置本地jar包在项目中的存放路径&ndash;&gt;
+              &lt;!&ndash;<directory>src/main/webapp/WEB-INF/lib/</directory>&ndash;&gt;
+              &lt;!&ndash;配置打包时jar包的存放路径&ndash;&gt;
               <targetPath>WEB-INF/lib</targetPath>
               <includes>
                   <include>**/*.jar</include>
               </includes>
           </resource>
-      </resources>
+      </resources>-->
   </build>
 </project>

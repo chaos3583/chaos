@@ -10,7 +10,7 @@
   <groupId>com.chaos</groupId>
   <artifactId>chaos-home</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <name>chaos-home Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -33,6 +33,10 @@
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-data-cassandra</artifactId>
         </dependency>
+        <!--<dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-redis</artifactId>
+          </dependency>-->
   </dependencies>
   <build>
     <finalName>chaos-home</finalName>

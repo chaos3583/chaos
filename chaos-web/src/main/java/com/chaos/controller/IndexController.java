@@ -38,7 +38,7 @@ public class IndexController {
     @RequestMapping("/toImgJcrop")
     public ModelAndView toImgJcrop() throws Exception{
     	ModelAndView model = new ModelAndView();
-	  	model.setViewName("jcrop");
+	  	model.setViewName("2.74");
 	  	return model;
     }
     

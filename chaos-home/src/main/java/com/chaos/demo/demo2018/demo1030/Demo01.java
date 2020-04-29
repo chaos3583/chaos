@@ -1,7 +1,5 @@
 package com.chaos.demo.demo2018.demo1030;
 
-import com.chaos.demo2018.demo1030.MyLinkedList.Node;
-
 /**
  * @program: demo
  * @description: 测试单向链表
@@ -21,7 +19,7 @@ public class Demo01 {
 //        Node byValue = linkedList.findByValue(3);
 //        System.out.println(byValue.getData());
 //        linkedList.remove(3);
-        Node result = linkedList.revert2();
+        MyLinkedList.Node result = linkedList.revert2();
         linkedList.printAll();
     }
 }

@@ -14,7 +14,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @MapperScan(basePackages = {"com.shawearn.demo.persistence"})
 @ComponentScan(basePackages = {"com.chaos"})
-//@PropertySource({"classpath:application.properties"})
 @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
 public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {

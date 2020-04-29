@@ -18,11 +18,7 @@ public class UserServiceImpl implements IUserService {
 	
 	@Override
 	public User login(User user) {
-		System.out.println("执行成功");
-		MqMessageVO messageVo = new MqMessageVO();
-		messageVo.setMessage("测试mq");
-		messageVo.setQueueName("chaos-mq");
-//		DataResult<Boolean> send = rabbitMqService.send(messageVo);
+//		userDao.login(user);
 		return user;
 	}
 	

@@ -6,23 +6,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.chaos.dao.mapper.MemberMapper">
 <resultMap  id="BaseResultMap" type="com.chaos.model.Member">
 	<id column="id" jdbcType="BIGINT" property="id" />
-	<result column="employee_id" jdbcType="BIGINT" property="employeeId" /> 
-	<result column="gender" jdbcType="BIGINT" property="gender" /> 
+	<result column="employee_id" jdbcType="INTEGER" property="employeeId" />
+	<result column="gender" jdbcType="INTEGER" property="gender" />
 	<result column="nickname" jdbcType="VARCHAR" property="nickname" /> 
 	<result column="uname" jdbcType="VARCHAR" property="uname" /> 
 	<result column="passwd" jdbcType="VARCHAR" property="passwd" /> 
 	<result column="email" jdbcType="VARCHAR" property="email" /> 
 	<result column="phone" jdbcType="VARCHAR" property="phone" /> 
-	<result column="reg_time" jdbcType="TIMESTAMP" property="regTime" /> 
-	<result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" /> 
-	<result column="last_ip" jdbcType="VARCHAR" property="lastIp" /> 
+	<result column="reg_time" jdbcType="BIGINT" property="regTime" />
+	<result column="last_login" jdbcType="BIGINT" property="lastLogin" />
+	<result column="last_ip" jdbcType="VARCHAR" property="lastIp" />
 </resultMap>
     <select id="findMemberByUid" resultType="com.chaos.model.Member">
         SELECT * FROM MEMBER WHERE id=#{id} limit 0,1;
     </select>
     
     <insert id="insertMember" parameterType= "com.chaos.model.Member" useGeneratedKeys="true" keyProperty="id"> 
-    	insert into MEMBER(id,employee_id,gender,nickname,uname,passwd,email,phone,reg_time,last_login,last_ip) 
+    	insert into MEMBER(id,employee_id,gender,nickname,uname,passwd,email,phone,reg_time,last_login,last_ip)
     	values(#{id},#{employeeId},#{gender},#{nickname},#{uname},#{passwd},#{email},#{phone},#{regTime},#{lastLogin},#{lastIp});
     </insert>
 

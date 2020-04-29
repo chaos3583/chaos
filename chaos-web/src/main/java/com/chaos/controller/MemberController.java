@@ -27,4 +27,9 @@ public class MemberController {
 		String fileName = "导出数据"+DateUtils.getDate("yyyy-MM-dd") + ".xlsx";
 		new ExportExcel("member", Member.class).setDataList(memberList).write(response, fileName);
 	}
+
+	@RequestMapping("/findMember")
+	public void findMember(HttpServletRequest request, HttpServletResponse response,String jsonstr) throws Exception {
+		List<Member> memberList = memberService.find();
+	}
 }
