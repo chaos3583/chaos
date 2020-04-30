@@ -18,8 +18,8 @@ public class UserServiceImpl implements IUserService {
 	
 	@Override
 	public User login(User user) {
-//		userDao.login(user);
-		return user;
+		User login = userDao.login(user);
+		return login;
 	}
 	
 

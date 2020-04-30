@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chaos.dao.mapper.IUserDao">
+<resultMap  id="BaseResultMap" type="com.chaos.model.User">
+	<id column="id" jdbcType="BIGINT" property="id" />
+	<result column="userName" jdbcType="VARCHAR" property="userName" />
+	<result column="age" jdbcType="INTEGER" property="age" />
+	<result column="password" jdbcType="VARCHAR" property="password" />
+	<result column="token" jdbcType="VARCHAR" property="token" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="status" jdbcType="INTEGER" property="status" />
+	<result column="action" jdbcType="INTEGER" property="action" />
+	<result column="actionBy" jdbcType="VARCHAR" property="actionBy" />
+	<result column="actionTime" jdbcType="BIGINT" property="actionTime" />
+	<result column="createBy" jdbcType="VARCHAR" property="createBy" />
+	<result column="createTime" jdbcType="BIGINT" property="createTime" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+
+</resultMap>
+    <select id="login" resultType="com.chaos.model.User" parameterType="com.chaos.model.User">
+        SELECT * FROM user WHERE userName=#{userName} and password=#{password}
+    </select>
+</mapper>

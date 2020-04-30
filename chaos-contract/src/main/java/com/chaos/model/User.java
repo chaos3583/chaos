@@ -1,8 +1,9 @@
 package com.chaos.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Comparable<User>{
+public class User implements Comparable<User>,Serializable{
 
 	private Integer id;
 	/**
@@ -29,6 +30,20 @@ public class User implements Comparable<User>{
      * token
      */
     private String token;
+
+    private Integer action;
+
+    private Integer status;
+
+    private String actionBy;
+
+    private Long actionTime;
+
+    private String createBy;
+
+    private Long createTime;
+
+    private String remark;
     
 	public User() {
 		super();
@@ -112,6 +127,62 @@ public class User implements Comparable<User>{
 
 	public void setTokenExpireTime(Integer tokenExpireTime) {
 		this.tokenExpireTime = tokenExpireTime;
+	}
+
+	public Integer getAction() {
+		return action;
+	}
+
+	public void setAction(Integer action) {
+		this.action = action;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public String getActionBy() {
+		return actionBy;
+	}
+
+	public void setActionBy(String actionBy) {
+		this.actionBy = actionBy;
+	}
+
+	public Long getActionTime() {
+		return actionTime;
+	}
+
+	public void setActionTime(Long actionTime) {
+		this.actionTime = actionTime;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Long getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	@Override
