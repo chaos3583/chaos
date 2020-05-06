@@ -20,9 +20,5 @@ public class TestService {
     public void testMQ(Message message) throws Exception{
         byte[] body = message.getBody();
         System.out.println(new String(body));
-        JSONObject resultMap = JSON.parseObject(new String(body));
-        if("夏夜".equals(resultMap.get("name"))){
-            throw new Exception("测试MQ retry");
-        }
     }
 }

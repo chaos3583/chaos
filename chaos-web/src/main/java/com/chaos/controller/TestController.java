@@ -29,13 +29,12 @@ public class TestController {
     public RabbitMqProductor rabbitMqProductor;
 
     @RequestMapping("/testMQ")
-    @ResponseBody
-    public Object testMQ(HttpServletRequest request, HttpServletResponse response,@RequestBody String jsonStr) {
+    public Object testMQ(@RequestBody String jsonStr) {
         User user = ControllerUtil.strJsonToObject(jsonStr, User.class);
         try {
             JSONObject map = new JSONObject();
             map.put("name", user.getUserName());
-            rabbitMqProductor.send(MessageConstants.EXCHANGE_NAME,MessageConstants.CHAOS_QUEUE_NAME,MessageConstants.ROUTING_KEY_NAME);
+            rabbitMqProductor.send(MessageConstants.EXCHANGE_NAME,MessageConstants.ROUTING_KEY_NAME,jsonStr);
             return "";
         } catch (Exception e) {
             e.printStackTrace();
