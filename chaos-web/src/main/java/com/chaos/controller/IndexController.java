@@ -6,11 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.jms.Destination;
+import javax.print.attribute.standard.Destination;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/chaos")
 public class IndexController {
-	
-	@Autowired
-	private MessageProducer producer;
+
 
     @RequestMapping("/index")
     public ModelAndView findMemberByMemberId() throws Exception{
@@ -87,11 +84,5 @@ public class IndexController {
         }
         return null;
     }
-    
-    //触发报警
-    @RequestMapping("/baojing")
-    public void baojing(){
-    	Destination destination = new ActiveMQQueue("aaa");
-    	producer.sendMessage(destination, "呵呵呵");
-    }
+
 }
