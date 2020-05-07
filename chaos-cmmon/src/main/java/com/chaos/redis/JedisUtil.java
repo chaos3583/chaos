@@ -52,7 +52,7 @@ public class JedisUtil {
 			config.setMaxIdle(redisProperties.getPool().getMaxIdle());
 			config.setMinIdle(redisProperties.getPool().getMinIdle());
 
-			pool = new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(),180000,redisProperties.getPassword(),redisProperties.getDatabase());
+			pool = new JedisPool(config, redisProperties.getHost(), redisProperties.getPort(),180000);
 		}
 
 		Jedis jedis = null;
