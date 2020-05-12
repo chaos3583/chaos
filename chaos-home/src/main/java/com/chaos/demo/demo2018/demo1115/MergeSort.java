@@ -9,7 +9,7 @@ package com.chaos.demo.demo2018.demo1115;
 public class MergeSort {
 
     public static void main(String[] args){
-        int[] a = {2,3,1,4,65,44,23,12};
+        int[] a =  {6,4,7,2,8,10,5};
         mergeSort(a,0,a.length-1);
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i]);
@@ -43,14 +43,20 @@ public class MergeSort {
         }
         //以上循环至少有一个数组遍历完了，也可能有一个数组还没遍历完
         // 判断哪个数组还有剩余值,
-        int start =i;
-        int end = q;
-        if(j<=r){
-            start= j;
-            end = r;
+//        int start =i;
+//        int end = q;
+//        if(j<=r){
+//            start= j;
+//            end = r;
+//        }
+//        while (start<=end){
+//            temp[k++] = a[start++];
+//        }
+        while(i<=q){
+            temp[k++]=a[i++];
         }
-        while (start<=end){
-            temp[k++] = a[start++];
+        while (j<=r){
+            temp[k++]=a[j++];
         }
         //将temp复制到a
         for (int l = 0; l <=r-p; ++l) {

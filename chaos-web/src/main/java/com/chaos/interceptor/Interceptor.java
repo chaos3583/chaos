@@ -61,10 +61,14 @@ public class Interceptor extends HandlerInterceptorAdapter{
 	public void doAround(ProceedingJoinPoint point){
 		try {
 			System.out.println("环绕通知前");
-			point.proceed();
+			long startTime = System.currentTimeMillis();
+			Object[] args = point.getArgs();//session和参数
+			point.proceed(args);
+			long endTime = System.currentTimeMillis();
+			long time = endTime - startTime;
 			MethodSignature signature = (MethodSignature) point.getSignature();
 			String methodName = signature.getDeclaringTypeName() + "." + signature.getName();
-			System.out.println("环绕通知后,方法："+methodName);
+			System.out.println("环绕通知后,方法："+methodName+",耗时："+time+"ms");
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
 		}
