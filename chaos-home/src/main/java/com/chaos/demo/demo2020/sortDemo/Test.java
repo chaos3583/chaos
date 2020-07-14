@@ -1,9 +1,6 @@
 package com.chaos.demo.demo2020.sortDemo;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @program: demo
@@ -28,7 +25,13 @@ public class Test {
         treeMap.put("3","3");
         treeMap.put("5","5");
         Map<String,String> hashMap = new HashMap<>();
-
+        List<Integer> list = Arrays.asList(2,3,1,66,5,3,7);
+        list.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1-o2;
+            }
+        });
     }
 
     public static void printAll(int [] a){

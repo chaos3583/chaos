@@ -10,11 +10,14 @@ public class QuickSort {
 
     public static void main(String[] args){
         int[] a = {6,4,7,2,8,10,5};
-        quickSort(a,0,a.length-1);
-        for (int i = 0; i < a.length; i++) {
-            int i1 = a[i];
-            System.out.println(i1);
-        }
+//        quickSort(a,0,a.length-1);
+//        for (int i = 0; i < a.length; i++) {
+//            int i1 = a[i];
+//            System.out.println(i1);
+//        }
+        int k=2;
+        int i = selectOneBig(a, 0, a.length - 1, k);
+        System.out.printf("第"+k+"大元素："+i);
     }
     /**
      * 快速排序
@@ -57,5 +60,27 @@ public class QuickSort {
         a[q]=a[i];
         a[i]=temp;
         return i;
+    }
+
+    /**
+     * 在数组a中寻找第k大的元素,要求时间复杂度 O(n)
+     * @param a
+     * @param k
+     * @return
+     */
+    public static int selectOneBig(int [] a,int p,int q,int k){
+        if (p==k){
+            return a[p];
+        }
+        int partition = partition(a, p, q);
+        if (partition+1==k) {
+            return a[partition + 1];
+        }
+        if (partition+1<k){
+            selectOneBig(a,partition+1,q,k);
+        }else {
+            selectOneBig(a,p,partition,k);
+        }
+        return -1;
     }
 }
